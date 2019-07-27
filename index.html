@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Project Title</title>
+    <title>Rock Paper Scissors</title>
 
     <!-- Reset CSS -->
     <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset.css">
@@ -19,13 +19,66 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body>
+<body class="w-100 h-100 mx-auto">
 
-    <!-- TODO: Content -->
+    <!-- Jumbotron with title -->
+    <div class="jumbotron jumbotron-fluid text-center">
+        <p class="display-4">Rock - Paper - Scissors</p>
+        <p class="h4">An online, multiplayer game</p>
+    </div>
+
+    <!-- Sign in card -->
+    <div class="card mx-auto w-25 shadow" id="sign-in">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Username</label>
+                  <input type="text" class="form-control" id="username" placeholder="Enter username">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Rock, paper, or scissors options -->
+    <div class="row" style="display: none;">
+        <div class="col-lg-3 mx-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <img src="./assets/images/rock.png" alt="Rock">
+                </div>
+                <div class="card-footer text-center">
+                    Rock
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 mx-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <img src="./assets/images/paper.png" alt="Paper">
+                </div>
+                <div class="card-footer text-center">
+                    Paper
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 mx-auto">
+            <div class="card shadow">
+                <div class="card-body">
+                    <img src="./assets/images/scissors.png" alt="Scissors">
+                </div>
+                <div class="card-footer text-center">
+                    Scissors
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
     </script>
 
     <!-- Popper -->
