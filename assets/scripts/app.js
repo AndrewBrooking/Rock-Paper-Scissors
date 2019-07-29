@@ -16,5 +16,17 @@ let database = firebase.database();
 
 // Start logic after page has loaded
 $(document).ready(function () {
-    // TODO
+    // Handle button click events
+    $(document).on("click", "button", buttonClick);
+
+    // Handle RPS selection
+    $(document).on("click", ".card", cardClick);
+
+    function buttonClick(event) {
+        // TODO
+    }
+
+    function cardClick(event) {
+        // TODO
+    }
 });
