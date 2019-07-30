@@ -41,6 +41,8 @@
     
     <!-- Rock, paper, or scissor options -->
     <div class="row" id="selection" style="display: none;">
+
+        <!-- Rock -->
         <div class="col-sm-10 col-md-4 col-lg-3 mt-3 mx-auto" id="card-left">
             <div class="card shadow rps" id="rock">
                 <div class="card-body p-0 mx-auto">
@@ -52,6 +54,7 @@
             </div>
         </div>
 
+        <!-- Paper -->
         <div class="col-sm-10 col-md-4 col-lg-3 mx-auto" id="card-center">
             <div class="card shadow rps" id="paper">
                 <div class="card-body p-0 mx-auto">
@@ -63,6 +66,7 @@
             </div>
         </div>
 
+        <!-- Scissors -->
         <div class="col-sm-10 col-md-4 col-lg-3 mx-auto" id="card-right">
             <div class="card shadow rps" id="scissors">
                 <div class="card-body p-0 mx-auto">
@@ -72,6 +76,18 @@
                     <span class="h3">Scissors</span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Chat -->
+    <div class="card shadow mx-auto w-25 mt-5">
+        <div class="card-body overflow-auto" id="chat">
+            <span class="h3">Chat</span>
+            <textarea class="w-100" style="height: 15rem;" readonly></textarea>
+        </div>
+        <div class="card-footer">
+            <input type="text" class="overflow-auto" style="width: 80%;"></input>
+            <button class="btn btn-primary float-right">Send</button>
         </div>
     </div>
 

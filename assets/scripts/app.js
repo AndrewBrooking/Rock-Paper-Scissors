@@ -11,7 +11,7 @@ var firebaseConfig = {
 // Start logic after page has loaded
 $(document).ready(function () {
 
-    let database, connections;
+    let database, connections, chat;
     let userID = "";
     let username = "";
     let selection = "";
@@ -59,6 +59,8 @@ $(document).ready(function () {
 
         // Set user settings on Firebase
         database.ref("/connections/" + userID).set(settings);
+
+        // TODO: Highlight selection
 
         // TODO: Disable selecting other options
     }
