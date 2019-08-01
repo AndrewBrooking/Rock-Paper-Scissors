@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
-<body class="h-100 mx-auto" style="width: 95%;">
+<body class="h-100 mx-auto fade-in" style="width: 95%;">
 
     <!-- Jumbotron with title -->
     <div class="jumbotron jumbotron-fluid text-center mt-1">
@@ -31,21 +31,26 @@
         <div class="card-body">
             <form>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Username</label>
-                  <input type="text" class="form-control" id="username" placeholder="Enter username">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
             </form>
         </div>
     </div>
-    
+
+    <!-- Game status -->
+    <div class="col mx-auto text-center pb-3" style="display: none;" id="status">
+        <span class="display-3" id="status-text"></span>
+    </div>
+
     <!-- Rock, paper, or scissor options -->
     <div class="row" id="selection" style="display: none;">
 
         <!-- Rock -->
-        <div class="col-sm-10 col-md-4 col-lg-3 mt-3 mx-auto" id="card-left">
+        <div class="col-sm-10 col-md-4 col-lg-3 mx-auto" id="card-left">
             <div class="card shadow rps" id="rock">
-                <div class="card-body p-0 mx-auto">
+                <div class="card-body p-0 pb-2 mx-auto">
                     <img src="./assets/images/rock.png" alt="Rock">
                 </div>
                 <div class="card-footer text-center">
@@ -57,7 +62,7 @@
         <!-- Paper -->
         <div class="col-sm-10 col-md-4 col-lg-3 mx-auto" id="card-center">
             <div class="card shadow rps" id="paper">
-                <div class="card-body p-0 mx-auto">
+                <div class="card-body p-0 pb-2 mx-auto">
                     <img src="./assets/images/paper.png" alt="Paper">
                 </div>
                 <div class="card-footer text-center">
@@ -69,7 +74,7 @@
         <!-- Scissors -->
         <div class="col-sm-10 col-md-4 col-lg-3 mx-auto" id="card-right">
             <div class="card shadow rps" id="scissors">
-                <div class="card-body p-0 mx-auto">
+                <div class="card-body p-0 pb-2 mx-auto">
                     <img src="./assets/images/scissors.png" alt="Scissors">
                 </div>
                 <div class="card-footer text-center">
@@ -80,14 +85,16 @@
     </div>
 
     <!-- Chat -->
-    <div class="card shadow mx-auto w-25 mt-5">
-        <div class="card-body overflow-auto" id="chat">
+    <div class="card shadow mx-auto w-50 my-5" style="display: none;" id="chat">
+        <div class="card-body overflow-auto">
             <span class="h3">Chat</span>
-            <textarea class="w-100" style="height: 15rem;" readonly></textarea>
+            <div class="mx-auto w-100 px-1 border border-primary overflow-auto" style="height: 15rem;" id="messages"></div>
         </div>
         <div class="card-footer">
-            <input type="text" class="overflow-auto" style="width: 80%;"></input>
-            <button class="btn btn-primary float-right">Send</button>
+            <form>
+                <input type="text" class="overflow-auto" style="width: 80%;" id="message"></input>
+                <button type="submit" class="btn btn-primary float-right" id="send">Send</button>
+            </form>
         </div>
     </div>
 
@@ -111,6 +118,9 @@
 
     <!-- Firebase Database -->
     <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-database.js"></script>
+
+    <!-- Moment JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <!-- App JS -->
     <script src="./assets/scripts/app.js"></script>

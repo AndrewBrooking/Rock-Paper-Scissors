@@ -17,12 +17,13 @@ $(document).ready(function () {
     let selection = "";
 
     // Handle button click events
-    $(document).on("click", "button", buttonClick);
+    $("#submit").on("click", init);
+    $("#send").on("click", sendMessage);
 
     // Handle RPS selection
     $(document).on("click", ".rps", cardClick);
 
-    function buttonClick(event) {
+    function init(event) {
         event.preventDefault();
 
         // Hide the username card
@@ -34,22 +35,89 @@ $(document).ready(function () {
         // Store database reference
         database = firebase.database();
 
+        // Store chat reference
+        chat = database.ref("/chat");
+
+        // Handles previous/new chat messages
+        chat.on("child_added", appendMessage);
+
         // Store connection reference
         connections = database.ref("/connections");
-        connected = database.ref(".info/connected");
+        let connected = database.ref(".info/connected");
 
         // Handle connection to firebase
         connected.on("value", connect);
 
-        // Show the RPS selections
-        $("#selection").fadeIn(1500);
+        let status = $("#status-text");
+
+        if (connections.count > 2) {
+            // Change status text
+            status.text("Too many players connected, try again later.");
+        } else {
+            // Change status text
+            status.text("Select a move below");
+
+            // Show the RPS selections
+            setTimeout(function () {
+                $("#selection").slideDown();
+            }, 1000);
+        }
+
+        setTimeout(function () {
+            $("#status").slideDown();
+        }, 750);
+
+        // Show the chat
+        setTimeout(function () {
+            $("#chat").slideDown();
+        }, 1250);
+    }
+
+    function sendMessage(event) {
+        event.preventDefault();
+
+        // Get player's message
+        let msg = $("#message").val().trim();
+
+        if (msg === "") {
+            return;
+        }
+
+        // Create chat entry
+        let entry = {
+            from: username,
+            message: msg,
+            timestamp: firebase.database.ServerValue.TIMESTAMP
+        };
+
+        // Add new message
+        chat.push(entry);
+
+        // Empty message field
+        $("#message").val("");
+    }
+
+    function appendMessage(snapshot) {
+        let val = snapshot.val();
+
+        let from = val.from;
+        let msg = val.message;
+        let timestamp = moment(val.timestamp, "x").format("MMM Do, YYYY hh:mm:ss");
+
+        let p = $("<p>")
+            .addClass("mb-0")
+            .text(
+                from + " [" + timestamp + "]: " + msg
+            );
+
+        $("#messages").append(p);
     }
 
     function cardClick(event) {
         // Obtain user selection
         selection = $(this).attr("id");
 
-        console.log("Card clicked (" + selection + ")");
+        //console.log("Card clicked (" + selection + ")");
 
         // Set user settings
         let settings = {
